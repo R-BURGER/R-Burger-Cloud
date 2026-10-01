@@ -14,17 +14,27 @@ powers the entire system.
 ## 🏗️ Architecture
 
 ```
-📱 R Burger Mobile (Flutter APK)      💻 R Burger Web + Admin (React)
-        ↓                                    ↓
-   Talks to the API directly           Hosted on Vercel
-        ↓                                    ↓
-                    Amazon EC2 (rburger-ec2)
-                    .NET 8 API — systemd service
-                         ↓              ↓
-                  Amazon RDS      Amazon S3
-                  (SQL Server)    (menu images)
-
-🔐 Secrets: Environment Variables on the server
++------------------------------------+        +-----------------------------------+
+|  Customer App (Vercel)             |        |  Admin Dashboard (Vercel)          |
+|  https://rb-resturant.vercel.app   |        |  https://rb-resturant-admin...    |
++-----------------+------------------+        +-----------------+-----------------+
+                  |                                             |
+                  +---------------------+-----------------------+
+                                        | (HTTPS / REST API)
+                                        v
+                       +---------------------------------+
+                       |  AWS EC2 Instance (Ubuntu)      |
+                       |  - .NET 8 Web API (Systemd)     |
+                       |  - IAM Role Authentication      |
+                       +----------------+----------------+
+                                        |
+                 +----------------------+----------------------+
+                 |                                             |
+                 v                                             v
+  +------------------------------+             +-------------------------------+
+  |  AWS RDS Database            |             |  AWS S3 Bucket                |
+  |  (SQL Server)                |             |  (rburger-media)              |
+  +------------------------------+             +-------------------------------+
 ```
 
 <p align="center">
