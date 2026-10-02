@@ -14,36 +14,38 @@ powers the entire system.
 ## 🏗️ Architecture
 
 ```
-+------------------------------------+        +-----------------------------------+
-|  Customer App (Vercel)             |        |  Admin Dashboard (Vercel)          |
-|  https://rb-resturant.vercel.app   |        |  https://rb-resturant-admin...    |
-+-----------------+------------------+        +-----------------+-----------------+
++-----------------------------------+        +-----------------------------------+
+| Customer App (Vercel)             |        | Admin Dashboard (Vercel)         |
+| rb-resturant.vercel.app           |        | rb-resturant-admin.vercel.app    |
++-----------------+-----------------+        +-----------------+-----------------+
                   |                                             |
-                  +---------------------+-----------------------+
-                                        | (HTTPS / REST API)
-                                        v
-                       +---------------------------------+
-                       |  AWS EC2 Instance (Ubuntu)      |
-                       |  - .NET 8 Web API (Systemd)     |
-                       |  - IAM Role Authentication      |
-                       +----------------+----------------+
+                  +----------------------+----------------------+
+                                         |
+                                  HTTPS / REST API
+                                         |
+                                         v
+                       +----------------------------------+
+                       | AWS EC2 Instance                  |
+                       | Amazon Linux 2023                 |
+                       |                                  |
+                       | Nginx (HTTPS / Reverse Proxy)     |
+                       |          |                       |
+                       |          v                       |
+                       | .NET 8 Web API                   |
+                       | Systemd                          |
+                       |                                  |
+                       | IAM Role for AWS Service Access |
+                       +----------------+-----------------+
                                         |
-                 +----------------------+----------------------+
-                 |                                             |
-                 v                                             v
-  +------------------------------+             +-------------------------------+
-  |  AWS RDS Database            |             |  AWS S3 Bucket                |
-  |  (SQL Server)                |             |  (rburger-media)              |
-  +------------------------------+             +-------------------------------+
+                         +--------------+--------------+
+                         |                             |
+                         v                             v
+              +---------------------+       +----------------------+
+              | AWS RDS             |       | AWS S3               |
+              | SQL Server          |       | rburger-media        |
+              | Database            |       | Media / Images       |
+              +---------------------+       +----------------------+
 ```
-
-<p align="center">
-  <!-- Add an architecture diagram here if you have one -->
-<img width="1408" height="768" alt="Architecture" src="https://github.com/user-attachments/assets/c6c00a68-06c0-40f1-afe3-56c9a688ef0a" />
-
-</p>
-
----
 
 ## ⚙️ AWS Services Used
 
