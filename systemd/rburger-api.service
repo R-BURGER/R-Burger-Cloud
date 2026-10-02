@@ -1,0 +1,19 @@
+[Unit]
+Description=R-Burger .NET 8 API
+After=network.target
+
+[Service]
+WorkingDirectory=YOUR_APP_DIRECTORY
+ExecStart=/usr/bin/dotnet YOUR_APP_DIRECTORY/RBurger.Api.dll
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=rburger-api
+User=ec2-user
+
+# Secrets are configured outside this public repository.
+# Example:
+# EnvironmentFile=/etc/rburger-api.env
+
+[Install]
+WantedBy=multi-user.target
