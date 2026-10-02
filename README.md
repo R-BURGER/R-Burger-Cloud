@@ -63,7 +63,8 @@ powers the entire system.
 
 <p align="center">
   <!-- Add 3-4 screenshots: live website, AWS console, API returning real data -->
- <img width="1920" height="768" alt="Screenshot (1088)" src="https://github.com/user-attachments/assets/8712f267-d415-4f81-99da-0733ba1ad995" />
+ <img width="1920" height="768" alt="Screenshot (1088)" src="https://github.com/user-attachments/assets/71d0fa11-7fe5-47d1-bcf3-9c94b44a5d20" />
+
 <img width="1601" height="677" alt="monitoring" src="https://github.com/user-attachments/assets/86026894-770f-4798-9abb-fe3450fd6284" />
 
 </p>
